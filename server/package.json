@@ -1,13 +1,13 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "description": "MERN full stack project demonstrating StackOverflow functionality, featuring user authentication, question posting, answer submissions, and voting. Built with MongoDB, Express, React, and Node.js.",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "start" : "nodemon index.js"
   },
-  "keywords": [],
+  "keywords": ["stackoverflow", "full-stack"],
   "author": "Khushi Sharma",
   "license": "ISC",
   "dependencies": {

@@ -12,22 +12,31 @@ export const signup = async(req, res) => {
         if (existinguser) {
             return res.status(404)
             .json({
-                message : "User already exists"
+                message : "User already exist"
             })
         }
 
+        // Hash the password before storing it in the database
         const hashedPassword = await bcrypt.hash(password, 12)
 
+
+        // Creating a new user in the database
         const newUser = await users.create({
             name, 
             email,
             password : hashedPassword
         })
 
+        
+        // Generating a JWT token for the newly created user
         const token = jwt.sign({
-            email : newUser.email, id : newUser._id
-        }, process.env.JWT_SECRET, {expiresIn : "1h"} )
+            email : newUser.email, 
+            id : newUser._id
+        }, 
+        process.env.JWT_SECRET, {expiresIn : "1h"} )
 
+
+        // Sends response with newly created user data and JWT token
         res.status(200).json({
             result : newUser,
             token 
@@ -52,7 +61,7 @@ export const login = async(req, res) => {
         if (!existinguser) {
             return res.status(404)
             .json({
-                message : "User does not exists"
+                message : "User does not exist"
             })
         }
 
@@ -65,10 +74,15 @@ export const login = async(req, res) => {
             })
         }
 
+        // Generating a JWT token for the logged-in user
         const token = jwt.sign({
-            email : existinguser.email, id : existinguser._id
-        }, process.env.JWT_SECRET, {expiresIn : "1h"} )
+            email : existinguser.email, 
+            id : existinguser._id
+        }, 
+        process.env.JWT_SECRET, {expiresIn : "1h"} )
 
+
+        // Send response with existing user data and JWT token
         res.status(200).json({result : existinguser, token})
 
     } catch (error) {

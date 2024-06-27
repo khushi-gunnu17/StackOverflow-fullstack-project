@@ -6,14 +6,15 @@ import userroutes from './routes/user.js'
 
 const app = express()
 
+// It loads environment variables from a .env file into process.env.
 dotenv.config()
 
+// setting up middlewares
 app.use(express.json({limit : "30mb", extended : true}))
 app.use(express.urlencoded({limit : "30mb", extended : true}))
-app.use(cors())
+app.use(cors())     // Enable cors for all routes
 
-
-
+// Uses the userroutes for handling requests to /user endpoint.
 app.use("/user", userroutes)
 
 
