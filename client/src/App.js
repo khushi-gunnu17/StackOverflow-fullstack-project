@@ -14,7 +14,7 @@ function App() {
   // useDispatch is a hook provided by the react-redux library. When you call useDispatch, it gives you a reference to the dispatch function from the Redux store.
 
   // dispatch is like sending a message to your app's central state management system (Redux store).
-// This message tells the store to change something about the state, like adding a new user, fetching data, or updating a value.
+  // This message tells the store to change something about the state, like adding a new user, fetching data, or updating a value.
 
   useEffect(() => {
     dispatch(fetchallusers()) // Fetch all users when the component mounts

@@ -25,6 +25,3 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
-
-
-// Thunk Middleware: redux-thunk is a middleware that allows you to write action creators that return a function instead of an action. This is useful for handling asynchronous operations.
