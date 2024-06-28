@@ -1,6 +1,6 @@
-import * as api from '../api'
-import { setcurrentuser } from './currentuser'
-import { fetchallusers } from './users'
+import * as api from '../api/index.js'
+import { setcurrentuser } from './currentuser.js'
+import { fetchallusers } from './users.js'
 
 export const signup = (authdata, navigate) => async(dispatch) => {
     try {
