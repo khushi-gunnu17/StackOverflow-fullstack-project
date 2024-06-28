@@ -40,3 +40,27 @@ client <-- Response -- server
 - Building blocks of the webpage.
 
 
+## File Structure in a React application
+### Action:
+- Purpose: Contains action creators, which are functions that create actions.
+- Usage: Actions describe events that can change state or trigger side effects in the application. They are dispatched to the reducers to update the state.
+
+
+### API:
+- Purpose: Houses functions responsible for making API requests to the backend server.
+- Usage: Handles communication with the backend, including fetching data, posting updates, and handling responses. These functions abstract away the details of HTTP requests.
+
+
+### Reducers:
+- Purpose: Defines how the application's state changes in response to actions.
+- Usage: Reducers are pure functions that take the current state and an action as arguments and return a new state. They manage different parts of the application state by specifying how actions transform the state.
+
+
+### Components:
+- Purpose: Contains reusable UI components used throughout the application.
+- Usage: These components are often small, self-contained units responsible for rendering a specific part of the UI. They are composed together to build the entire user interface.
+
+
+### Pages:
+- Purpose: Represents top-level views or screens of the application.
+- Usage: Each page typically corresponds to a different route or URL in the application. Pages are composed of components and are responsible for structuring the layout and behavior of the application's screens.

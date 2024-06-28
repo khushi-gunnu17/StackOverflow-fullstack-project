@@ -13,6 +13,10 @@ API.interceptors.request.use((req) => {
     return req
 })
 
+// This interceptor function runs before each request (req) is sent. It checks if there's an item called "Profile" in localStorage. If it exists, it adds an Authorization header to the request using a JWT token stored in "Profile". This is useful for authenticating requests that require user authorization.
+
+
+
 export const login = (authdata) => API.post("user/login", authdata)
 export const signup = (authdata) => API.post("user/signup", authdata)
 export const getallusers = () => API.get("/user/getallusers")

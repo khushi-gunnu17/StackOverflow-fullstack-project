@@ -9,17 +9,17 @@ import Tags from './pages/Tags/Tags.jsx'
 import Users from './pages/Users/Users.jsx'
 import Userprofile from './pages/Userprofile/Userprofile.jsx'
 
-function RoutesAll({slidein, handleSlidein}) {
+function RoutesAll({slidein, handleslidein}) {
     return (
         <Routes>
-           <Route path='/' element={<Home slidein={slidein} handleSlidein={handleSlidein}/>} /> 
+           <Route path='/' element={<Home slidein={slidein} handleslidein={handleslidein}/>} /> 
            <Route path='/Askquestion' element={<Askquestion />} /> 
            <Route path='/Auth' element={<Auth />} /> 
-           <Route path='/Question' element={<Question slidein={slidein} handleSlidein={handleSlidein}/>} /> 
-           <Route path='/Question/:id' element={<Displayquestion slidein={slidein} handleSlidein={handleSlidein}/>} /> 
-           <Route path='/Tags' element={<Tags slidein={slidein} handleSlidein={handleSlidein}/>} /> 
-           <Route path='/Users' element={<Users slidein={slidein} handleSlidein={handleSlidein}/>} /> 
-           <Route path='/Users/:id' element={<Userprofile slidein={slidein} handleSlidein={handleSlidein}/>} /> 
+           <Route path='/Question' element={<Question slidein={slidein} handleslidein={handleslidein}/>} /> 
+           <Route path='/Question/:id' element={<Displayquestion slidein={slidein} handleslidein={handleslidein}/>} /> 
+           <Route path='/Tags' element={<Tags slidein={slidein} handleslidein={handleslidein}/>} /> 
+           <Route path='/Users' element={<Users slidein={slidein} handleslidein={handleslidein}/>} /> 
+           <Route path='/Users/:id' element={<Userprofile slidein={slidein} handleslidein={handleslidein}/>} /> 
         </Routes>
     )
 }

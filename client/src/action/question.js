@@ -10,6 +10,7 @@ export const askquestion = (questiondata, navigate) => async(dispatch) => {
             payload : data
         })
 
+        // Dispatches the fetchallquestion action to refresh the list of all questions.
         dispatch(fetchallquestion())
 
         navigate("/")
