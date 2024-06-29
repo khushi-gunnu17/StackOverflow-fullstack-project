@@ -7,68 +7,115 @@ import './Question.css'
 import Avatar from '../../Components/Avatar/Avatar.jsx'
 import Displayanswer from './Displayanswer.jsx'
 import { Link, useNavigate, useLocation, useParams } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { deletequestion, votequestion, postanswer } from '../../action/question.js'
+
 
 const Questiondetails = () => {
 
     const [answer, setanswer] = useState("")
-    const questionlist = null;
-    const user = null;
-    const id = useParams()
 
+    const dispatch = useDispatch()
+    const questionlist = useSelector((state) => state.questionreducer)
+    const user = useSelector((state) => state.currentuserreducer)
+
+    const { id } = useParams()
     const location = useLocation()
-
     const navigate = useNavigate()
 
     const url="http://localhost:3000"
 
-    const handlepostans = (e,answerlength) => {
+
+
+    const handlepostans = (e, answerlength) => {
+
         e.preventDefault()
 
         if (user === null) {
+
             alert("Login or signup to answer a question")
             navigate('/Auth')
+
         } else {
+
             if (answer === "") {
                 alert("Enter an answer before submitting.")
-            } else {
-                setanswer("")     
+            } 
+            else {
+
+                dispatch(postanswer({
+                    id,
+                    noofanswers : answerlength + 1,
+                    answerbody : answer,
+                    useranswered : user.result.name
+                }))
+
+                setanswer("")
+
             }
         }
     }
+
+
 
     const handleshare = () => {
         copy(url + location.pathname);
         alert('Copied URL : ' + url + location.pathname)
     }
 
-    const handledelete = () => {
 
+
+    const handledelete = () => {
+        dispatch(deletequestion(id, navigate))
     }
+
+
+
 
     const handleupvote = () => {
+
         if (user === null) {
             alert("Login or signup to answer a question")
             navigate('/Auth')
+        } 
+        else {
+            dispatch(votequestion(id, "upvote"))
         }
     }
+
+
+
 
     const handledownvote = () => {
+
         if (user === null) {
             alert("Login or signup to answer a question")
             navigate('/Auth')
+        } 
+        else {
+            dispatch(id, "downvote")
         }
     }
 
+
+
+
     return (
+
         <div className='question-details-page'>
-            {questionlist === null ? (
+
+            {questionlist.data === null ? (
                 <h1>Loading....</h1>
             ) : (
                 <>
-                    {questionlist.data.filter((question) => question._id === id).map((question) => (
+                    {questionlist?.data
+                        .filter((question) => question._id === id)
+                        .map((question) => (
+
                         <div key={question._id}>
 
                             <section className='question-details-container'>
+
                                 <h1>{question.questiontitle}</h1>
 
                                 <div className='question-details-container-2'>
@@ -84,26 +131,31 @@ const Questiondetails = () => {
                                         <p className='question-body'>{question.questionbody}</p>
 
                                         <div className='question-details-tags'>
-                                            {question.questionatgs.map((tag) => (
+                                            {question?.questiontags?.map((tag) => (
                                                 <p key={tag}>{tag}</p>
                                             ))}
                                         </div>
 
                                         <div className='question-actions-user'>
+
                                             <div>
                                                 <button type='button' onClick={handleshare}>
                                                     Share
                                                 </button>
+
                                                 {user?.result?._id === question?.userid && (
                                                     <button type='button' onClick={handledelete}>
                                                         Delete
                                                     </button>
                                                 )}
+
                                             </div>
 
                                             <div>
                                                 <p>Asked {moment(question.askedon).fromNow()}</p>
-                                                <Link to={`Users/${question.userid}`} className='user-link' style={{color: "0086d8"}}>
+
+                                                <Link to={`Users/${question.userid}`} className='user-link' style={{color: "#0086d8"}}>
+
                                                     <Avatar backgroundColor="orange" px="8px" py="5px" borderRadius="4px">
                                                         {question.userposted.charAt(0).toUpperCase()}
                                                     </Avatar>
@@ -114,9 +166,7 @@ const Questiondetails = () => {
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
-
                             </section>
 
                             {question.noofanswers !== 0 && (
@@ -127,9 +177,11 @@ const Questiondetails = () => {
                             )}
 
                             <section className='post-ans-container'>
+
                                 <h3>Your Answers</h3>
+
                                 <form onSubmit={(e) => {
-                                    handlepostans(e,question.answer.length)
+                                    handlepostans(e, question.answer.length)
                                 }} >
 
                                     <textarea name='' id='' cols="30" rows="10" value={answer} onChange={(e) => setanswer(e.target.value)} ></textarea>
@@ -139,8 +191,9 @@ const Questiondetails = () => {
 
                                 </form>
 
-                                <p>Browse Other Question tagged
-                                    {question.questiontags.map((tag) => (
+                                <p>
+                                    Browse Other Question tagged
+                                    {question?.questiontags?.map((tag) => (
                                         <Link to="/Tags" key={tag} className='ans-tag' >
                                             {" "}
                                             {tag} {" "}
@@ -151,10 +204,10 @@ const Questiondetails = () => {
                                         {" "}
                                         Ask your own question
                                     </Link>
+
                                 </p>
 
                             </section>
-
                         </div>
                     ) ) }
                 </>

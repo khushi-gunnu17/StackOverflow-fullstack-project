@@ -1,11 +1,16 @@
 import React, {useState} from 'react'
 import "./Askquestion.css"
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from "react-redux"
+import { askquestion } from "../../action/question.js"
+
+
 
 function Askquestion() {
 
-    // const navigate = useNavigate()
-    const user = 1
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const user = useSelector((state) => state.currentuserreducer)
     const [questiontitle, setquestiontitle] = useState("")
     const [questionbody, setquestionbody] = useState("")
     const [questiontag, setquestiontags] = useState("")
@@ -14,11 +19,16 @@ function Askquestion() {
         e.preventDefault()
 
         if(user) {
+
             if(questionbody && questiontitle && questiontag) {
+
+                dispatch(askquestion({questiontitle, questionbody, questiontag, userposted: user.result.name}, navigate))
                 alert("You have successfully posted a question.")
+
             } else {
                 alert("Please enter all the fields.")
             }
+
         } else {
             alert("Login to ask questions.")
         }
@@ -31,7 +41,9 @@ function Askquestion() {
     }
 
     return (
+
         <div className='ask-question'>
+
             <div className='ask-ques-container'>
 
                 <h1>Ask a public question.</h1>
@@ -52,20 +64,21 @@ function Askquestion() {
                             />
                         </label>
                         
+                        
                         <label htmlFor='ask-ques-body'>
                             <h4>Body</h4>
                             <p>Include all the information someone would need to answer your question.</p>
                             <textarea name='' id='ask-ques-body' onChange={(e) => {
                                 setquestionbody(e.target.value)
                             }} 
-                            cols="30"
-                            rows="10"
-                            onKeyDown={handleenter}
+                                cols="30"
+                                rows="10"
+                                onKeyDown = {handleenter}
                             ></textarea>
                         </label>
 
-                        <label htmlFor='ask-ques-tags'>
 
+                        <label htmlFor='ask-ques-tags'>
                             <h4>Tags</h4>
                             <p>Add upto 5 tags to descibe what your question is about</p>
                             <input 

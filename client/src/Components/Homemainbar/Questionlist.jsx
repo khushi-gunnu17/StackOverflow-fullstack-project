@@ -5,7 +5,7 @@ function Questionlist({questionList}) {
 
     return (
         <>
-            {questionList.map((question) => (
+            {questionList?.map((question) => (
                 <Question question={question} key={question._id} />
             ))}
         </>

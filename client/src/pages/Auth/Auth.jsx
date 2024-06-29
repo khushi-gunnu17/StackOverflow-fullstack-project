@@ -16,7 +16,8 @@ function Auth() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const handlesubmit = (e) => {
+
+    const handlesubmit = (e) => {   
         e.preventDefault();
 
         if(!email && !password) {
@@ -24,11 +25,13 @@ function Auth() {
         }
 
         if(issignup) {
+
             if(!name) {
                 alert("Enter a name to continue.")
             }
             dispatch(signup({name, email, password}, navigate))
             console.log(name, password, email);
+
         } else {
             dispatch(login({email, password}, navigate))
             console.log(email, password);
@@ -36,7 +39,7 @@ function Auth() {
     }
 
 
-    const handleswitch = (e) => {
+    const handleswitch = () => {
         setissignup(!issignup)
         setname("")
         setemail("")
@@ -45,9 +48,13 @@ function Auth() {
 
 
     return (
+
         <section className='auth-section'>
+
             {issignup && <Aboutauth/>}
+
             <div className='auth-container-2'>
+
                 <img src={icon} alt='icon' className='login-logo' />
                 
                 <form onSubmit={handlesubmit}>
@@ -64,21 +71,24 @@ function Auth() {
                         <h4>Email</h4>
                         <input type='email' id='email' name='email' value={email} onChange={(e) => {
                             setemail(e.target.value) 
-                        } }/>
+                        }}/>
                     </label>
 
                     <label htmlFor='password'>
+
                         <div style={{display : 'flex', justifyContent : "space-between"}}>
                             <h4>Password</h4>
                             {!issignup && (
-                                <p style={{color : "007ac6", fontSize : "13px"}}>
+                                <p style={{ color : "#007ac6", fontSize : "13px"}}>
                                     Forgot Password ?
                                 </p>
                             )}
                         </div>
+
                         <input type='password' name = 'password' id='password' value={password} onChange={(e) => {
                             setpassword(e.target.value)
                         }} />
+
                     </label>
                     
                     <button type='submit' className='auth-btn'>

@@ -67,7 +67,7 @@ client <-- Response -- server
 
 
 
-### Difference between Link, Navlink and Navigate
+## Difference between Link, Navlink and Navigate
 - Link: A basic component for navigation that creates links without reloading the page.
 - NavLink: An enhanced version of Link that allows you to apply an active class to the link when it matches the current route, useful for highlighting active links.
 - navigate: A function for programmatically navigating to different routes, useful for navigation based on events or actions beyond simple link clicks.

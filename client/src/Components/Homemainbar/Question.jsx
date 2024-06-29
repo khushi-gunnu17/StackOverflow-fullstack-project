@@ -33,7 +33,7 @@ function Question({ question }) {
                 <div className='display-tags-time'>
 
                     <div className='display-tags'>
-                        {question.questiontags.map((tag) => (
+                        {question?.questiontags?.map((tag) => (
                             <p key={tag}> {tag} </p>
                         ))}
                     </div>

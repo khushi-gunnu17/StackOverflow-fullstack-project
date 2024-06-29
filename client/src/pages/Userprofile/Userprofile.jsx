@@ -9,9 +9,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBirthdayCake, faPen } from '@fortawesome/free-solid-svg-icons'
 import { useSelector } from "react-redux";
 
+
+
 function Userprofile({slidein}) {
 
-    const [Switch , setswitch] = useState(false)
+    const [Switch , setSwitch] = useState(false)
 
     const {id} = useParams()
     const users = useSelector((state) => state.usersreducer)
@@ -22,11 +24,17 @@ function Userprofile({slidein}) {
 
 
     return (
+
         <div className='home-container-1'>
+
             <Leftsidebar slidein={slidein} />
+
             <div className='home-container-2'>
+
                 <section>
+
                     <div className="user-details-container">
+
                         <div className="user-details">
                             <Avatar backgroundColor="purple" color="white" fontSize="50px" px="40px" py="30px"> {currentprofile.name.charAt(0).toUpperCase()} </Avatar>
                             <div className="user-name">
@@ -38,22 +46,23 @@ function Userprofile({slidein}) {
                         </div>
 
                         {currentuser?.result?._id === id && (
-                            <button className="edit-profile-btn" type="button" onClick={() => setswitch(true)}>
+                            <button className="edit-profile-btn" type="button" onClick={() => setSwitch(true)}>
                                 <FontAwesomeIcon icon={faPen} /> Edit Profile
                             </button>
                         )}
                     </div>
 
+
                     <>
                         {Switch? (
-                            <Editprofileform currentuser={currentuser} setswitch={setswitch} />
+                            <Editprofileform currentuser={currentuser} setSwitch={setSwitch} />
                         ) : (
                             <Profilebio currentprofile={currentprofile} />
                         )}
                     </>
+
                 </section>
             </div>
-
         </div>
     )
 }

@@ -4,7 +4,7 @@ import { updateprofile } from "../../action/users.js";
 import './Userprofile.css'
 
 
-function Editprofileform({currentuser, setswitch}) {
+function Editprofileform({currentuser, setSwitch}) {
 
     const [name, setname] = useState(currentuser?.result?.name)
     const [about, setabout] = useState(currentuser?.result?.about)
@@ -20,17 +20,22 @@ function Editprofileform({currentuser, setswitch}) {
             dispatch(updateprofile(currentuser?.result?._id, {name, about, tags}))
         }
 
-        setswitch(false)
+        setSwitch(false)
     }
 
     return (
+
         <div>
+
             <h1 className="edit-profile-title">Edit Your Profile</h1>
             <h2 className="edit-profile-title-2">Public Information</h2>
+
+
             <form className="edit-profile-form" onSubmit={handlesubmit}>
+
                 <label htmlFor="name">
                     <h3>Display name</h3>
-                    <input type="text" value="name" onChange={(e) => setname(e.target.value)}/>
+                    <input type="text" value={name} onChange={(e) => setname(e.target.value)}/>
                 </label>
 
                 <label htmlFor="about">  
@@ -52,7 +57,7 @@ function Editprofileform({currentuser, setswitch}) {
 
                 <input type="submit" value="save profile" className="user-submit-btn" />
 
-                <button type="button" className="user-cancel-btn" onClick={() => setswitch(false)}>
+                <button type="button" className="user-cancel-btn" onClick={() => setSwitch(false)}>
                     Cancel
                 </button>
 

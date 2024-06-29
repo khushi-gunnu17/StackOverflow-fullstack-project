@@ -4,11 +4,18 @@ import Taglist from './Taglist.jsx'
 import './Tags.css'
 import tagsList from './Tagslist.js'
 
+
+
 function Tags({slidein}) {
+
     return (
+
         <div className='home-container-1'>
+
             <Leftsidebar slidein={slidein} />
+
             <div className='home-container-2'>
+
                 <h1 className='tags-h1'>
                     Tags
                 </h1>
@@ -26,6 +33,7 @@ function Tags({slidein}) {
                         <Taglist tag={tag} key={index} />
                     ))}
                 </div>
+                
             </div>
         </div>
     )

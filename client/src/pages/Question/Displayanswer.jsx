@@ -1,18 +1,25 @@
 import React from 'react'
 import moment from "moment"
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Avatar from '../../Components/Avatar/Avatar.jsx'
+import {useDispatch, useSelector } from "react-redux"
+import {deleteanswer} from "../../action/question.js"
+
 
 function Displayanswer({question, handleshare}) {
 
-    const user = null
-    const handledelete = (answerid, noofanswers) => {
+    const user = useSelector((state) => state.currentuserreducer)
+    const {id} = useParams()
+    const dispatch = useDispatch()
 
+    const handledelete = (answerid, noofanswers) => {
+        dispatch(deleteanswer(id, answerid, noofanswers -1))
     } 
 
     return (
         <div>
-            {question.answer.map((ans) => (
+            {question?.answer.map((ans) => (
+
                 <div className='display-ans' key={ans._id}>
 
                     <p>{ans.answerbody}</p>
@@ -30,7 +37,7 @@ function Displayanswer({question, handleshare}) {
                             <p>answered {moment (ans.answeredon).fromNow()}</p>
 
                             <Link to={`Users/${ans.userid}`} className='user-link' style={{ color: "#0086d8" }}>
-                                <Avatar backgroundColor="lightgreen"px="2px" py="2px" borderRadius="2px">
+                                <Avatar backgroundColor="lightgreen" px="2px" py="2px" borderRadius="2px">
                                     {ans.useranswered.charAt(0).toUpperCase()}
                                 </Avatar>
 
