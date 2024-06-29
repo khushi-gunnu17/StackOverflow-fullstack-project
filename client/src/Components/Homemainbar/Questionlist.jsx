@@ -13,3 +13,5 @@ function Questionlist({questionList}) {
 }
 
 export default Questionlist
+
+// A unique key prop is provided to each Question component to help React identify which items have changed, are added, or are removed. This key is usually a unique identifier from the question object, like _id.

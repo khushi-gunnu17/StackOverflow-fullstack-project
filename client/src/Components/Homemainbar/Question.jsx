@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import moment from "moment"
+// moment: A library for parsing, validating, manipulating, and formatting dates.
 
 function Question({ question }) {
     return (
@@ -16,7 +17,9 @@ function Question({ question }) {
                 <p>answers</p>
             </div>
 
+
             <div className='display-question-details'>
+
                 <Link to={`/Question/${question._id}`} className='question-title-link'>
                     {question.questiontitle.length > (window.innerWidth <= 400 ? 70 : 90)
                      ? question.questiontitle.substring(
@@ -28,6 +31,7 @@ function Question({ question }) {
                 </Link>
 
                 <div className='display-tags-time'>
+
                     <div className='display-tags'>
                         {question.questiontags.map((tag) => (
                             <p key={tag}> {tag} </p>
@@ -37,10 +41,18 @@ function Question({ question }) {
                     <p className='display-time'>
                         asked {moment(question.askedon).fromNow()} {question.userposted}
                     </p>
+
                 </div>
             </div>
+            
         </div>
     )
 }
 
 export default Question
+
+// moment(question.askedon).fromNow() uses the moment library to display the time the question was asked in a human-readable format (e.g., "2 hours ago").
+
+// question.userposted displays the user who posted the question.
+
+// Link is a component from the react-router-dom library. It creates a navigable link in the application without causing a full page reload.

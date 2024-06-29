@@ -64,3 +64,10 @@ client <-- Response -- server
 ### Pages:
 - Purpose: Represents top-level views or screens of the application.
 - Usage: Each page typically corresponds to a different route or URL in the application. Pages are composed of components and are responsible for structuring the layout and behavior of the application's screens.
+
+
+
+### Difference between Link, Navlink and Navigate
+- Link: A basic component for navigation that creates links without reloading the page.
+- NavLink: An enhanced version of Link that allows you to apply an active class to the link when it matches the current route, useful for highlighting active links.
+- navigate: A function for programmatically navigating to different routes, useful for navigation based on events or actions beyond simple link clicks.

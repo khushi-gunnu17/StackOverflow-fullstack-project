@@ -8,7 +8,9 @@ import search from '../../Assets/search-solid.svg'
 import Avatar from '../Avatar/Avatar.jsx'
 import './Navbar.css' 
 import { setcurrentuser } from '../../action/currentuser.js'
-import {jwtDecode} from "jwt-decode"
+import { jwtDecode } from "jwt-decode"
+
+
 
 function Navbar({handleslidein}) {
 
@@ -26,6 +28,9 @@ function Navbar({handleslidein}) {
         const token = User?.token
         if (token) {
             const decodetoken = jwtDecode(token)
+
+            // Checks if the token's expiration time (decodetoken.exp) converted to milliseconds (* 1000) is less than the current time (new Date().getTime()). If true, it calls handlelogout().
+            
             if (decodetoken.exp * 1000 < new Date().getTime()) {
                 handlelogout()
             }
@@ -35,14 +40,17 @@ function Navbar({handleslidein}) {
 
     return (
         <nav className='main-nav'>
+
             <div className='navbar'>
+
                 <button className='slide-in-icon' onClick={() => handleslidein()}>
                     <img src={bars} alt='bars' width='15' />
                 </button>
+
                 <div className='navbar-1'>
 
                     <Link to='/' className='nav-item nav-logo'>
-                        <img src={logo} alt="logo" />
+                        <img src={logo} alt="logo"/>
                     </Link>
                     
                     <Link to='/' className='nav-item nav-btn res-nav'>
@@ -80,6 +88,7 @@ function Navbar({handleslidein}) {
                         </>
                     )}
                 </div>
+                
             </div>
         </nav>
     )
