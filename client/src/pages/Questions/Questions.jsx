@@ -4,7 +4,7 @@ import Rightsidebar from '../../Components/Rightsidebar/Rightsidebar.jsx'
 import Homemainbar from '../../Components/Homemainbar/Homemainbar.jsx'
 import '../../App.css'
 
-function Question({slidein}) {
+function Questions({slidein}) {
     return (
         <div className='home-container-1'>
             <Leftsidebar slidein={slidein} />
@@ -16,4 +16,4 @@ function Question({slidein}) {
     )
 }
 
-export default Question
+export default Questions

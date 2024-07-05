@@ -8,7 +8,7 @@ import { signup, login } from '../../action/auth.js'
 
 function Auth() {
 
-    const [issignup, setissignup] = useState(false)
+    const [issignup, setIsSignup] = useState(false)
     const [name, setname] = useState("")
     const [email, setemail] = useState("")
     const [password, setpassword] = useState("")
@@ -39,8 +39,8 @@ function Auth() {
     }
 
 
-    const handleswitch = () => {
-        setissignup(!issignup)
+    const handleSwitch = () => {
+        setIsSignup(!issignup)
         setname("")
         setemail("")
         setpassword("")
@@ -54,10 +54,13 @@ function Auth() {
             {issignup && <Aboutauth/>}
 
             <div className='auth-container-2'>
-
-                <img src={icon} alt='icon' className='login-logo' />
+                
+                {/* change here */}
+                {!issignup && <img src={icon} alt='icon' className='login-logo' />}     
                 
                 <form onSubmit={handlesubmit}>
+
+                    {/* Name field in signup */}
                     {issignup && (
                         <label htmlFor='name'>
                             <h4>Display Name</h4>
@@ -67,6 +70,7 @@ function Auth() {
                         </label>
                     )}
 
+                    {/* email */}
                     <label htmlFor='email'>
                         <h4>Email</h4>
                         <input type='email' id='email' name='email' value={email} onChange={(e) => {
@@ -74,32 +78,51 @@ function Auth() {
                         }}/>
                     </label>
 
+
+                    {/* password */}
                     <label htmlFor='password'>
 
                         <div style={{display : 'flex', justifyContent : "space-between"}}>
+
                             <h4>Password</h4>
+
                             {!issignup && (
                                 <p style={{ color : "#007ac6", fontSize : "13px"}}>
                                     Forgot Password ?
                                 </p>
                             )}
+
                         </div>
+
 
                         <input type='password' name = 'password' id='password' value={password} onChange={(e) => {
                             setpassword(e.target.value)
                         }} />
 
                     </label>
+
                     
+                    {/* Button */}
                     <button type='submit' className='auth-btn'>
                         {issignup ? "Sign Up" : "Login"}
                     </button>
+
+
+                    {issignup && (
+                        <p style={{color : "#666767", fontSize : "13px"}}>
+                            By clicking sign up, you agree to our 
+                            <span style={{color : "#007ac6"}}>terms of <br /> service</span>, 
+                            <span style={{color : "#007ac6"}}>privacy policy</span> and 
+                            <span style={{color : "#007ac6"}}>cookie policy</span>.
+                        </p>
+                    )}
+
                         
                 </form>
                 
                 <p>
                     {issignup ? "Already have an account?" : "Don't have an account"}
-                    <button type='button' className='handle-switch-btn' onClick={handleswitch}>
+                    <button type='button' className='handle-switch-btn' onClick={handleSwitch}>
                         {issignup ? "Login" : "Sign Up"}
                     </button>
                 </p>

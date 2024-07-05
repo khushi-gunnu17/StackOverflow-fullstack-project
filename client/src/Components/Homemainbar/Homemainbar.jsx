@@ -1,6 +1,6 @@
 import React from 'react'
 import './Homemainbar.css'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import Questionlist from './Questionlist.jsx'
 
@@ -24,23 +24,31 @@ function Homemainbar() {
         <div className='main-bar'>
 
             <div className='main-bar-header'>
+
                 {location.pathname === '/' ? (
                     <h1>Top Questions</h1>
                 ) : (
                     <h1>All Questions</h1>
                 )}
 
+                {/* <Link to='/Askquestion' className='ask-btn' >Ask Questions</Link> */}
                 <button className='ask-btn' onClick={checkauth}>Ask Questions</button>
+
             </div>
 
             <div>
-                {
+                
+                {/* questionlist only here ? */}
+
+                {   
                     questionlist.data === null ? (
                         <h1>Loading...</h1>
                     ) : (
                         <>
+                            {/* no data here  */}
                             <p>{questionlist.data.length} questions</p>
                             <Questionlist questionlist = {questionlist.data} />
+                            {/* no data here after questionlist */}
                         </>
                     )
                 }

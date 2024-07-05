@@ -4,7 +4,9 @@ import moment from "moment"
 // moment: A library for parsing, validating, manipulating, and formatting dates.
 
 function Question({ question }) {
+
     return (
+
         <div className='display-question-container'>
 
             <div className='display-votes-ans'>
@@ -20,7 +22,9 @@ function Question({ question }) {
 
             <div className='display-question-details'>
 
-                <Link to={`/Question/${question._id}`} className='question-title-link'>
+                {/* id here not _id */}
+                
+                <Link to={`/Questions/${question._id}`} className='question-title-link'>
                     {question.questiontitle.length > (window.innerWidth <= 400 ? 70 : 90)
                      ? question.questiontitle.substring(
                         0,
@@ -33,12 +37,15 @@ function Question({ question }) {
                 <div className='display-tags-time'>
 
                     <div className='display-tags'>
-                        {question?.questiontags?.map((tag) => (
-                            <p key={tag}> {tag} </p>
-                        ))}
+                        {
+                            question?.questiontags?.map((tag) => (
+                                <p key={tag}> {tag} </p>
+                            ))
+                        }
                     </div>
 
                     <p className='display-time'>
+                        {/* .fromNow() is not here in the changed one */}
                         asked {moment(question.askedon).fromNow()} {question.userposted}
                     </p>
 

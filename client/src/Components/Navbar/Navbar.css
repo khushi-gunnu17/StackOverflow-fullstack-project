@@ -48,7 +48,6 @@
 }
 
 .nav-item {
-    
     margin: 0px 3px;
     font-size: small;
     font-weight: 500;
@@ -76,7 +75,8 @@
 }
 
 .navbar .navbar-1 form input {
-    width: 600px;
+    /* min-width: 90% */
+    width: 600px;   
     margin: 0;
     padding: 8px 10px 8px 32px;
     font-size: 13px;

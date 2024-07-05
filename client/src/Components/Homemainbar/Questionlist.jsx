@@ -4,10 +4,13 @@ import Question from './Question.jsx'
 function Questionlist({questionList}) {
 
     return (
+        // id here not _id
         <>
-            {questionList?.map((question) => (
-                <Question question={question} key={question._id} />
-            ))}
+            {
+                questionList?.map((question) => (
+                    <Question question={question} key={question._id} />
+                ))
+            }
         </>
     )
 }

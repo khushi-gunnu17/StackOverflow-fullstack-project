@@ -3,7 +3,7 @@ import moment from "moment"
 import copy from "copy-to-clipboard"
 import upvote from '../../Assets/sort-up.svg'
 import downvote from '../../Assets/sort-down.svg'
-import './Question.css'
+import './Questions.css'
 import Avatar from '../../Components/Avatar/Avatar.jsx'
 import Displayanswer from './Displayanswer.jsx'
 import { Link, useNavigate, useLocation, useParams } from 'react-router-dom'

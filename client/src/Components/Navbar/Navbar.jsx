@@ -14,7 +14,7 @@ import { jwtDecode } from "jwt-decode"
 
 function Navbar({handleslidein}) {
 
-    var User = useSelector((state) => state.currentuserreducer)
+    const User = useSelector((state) => state.currentuserreducer)       // var here 
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
@@ -38,7 +38,9 @@ function Navbar({handleslidein}) {
         dispatch(setcurrentuser(JSON.parse(localStorage.getItem("Profile"))))
     }, [User?.token, dispatch, handlelogout])
 
+
     return (
+
         <nav className='main-nav'>
 
             <div className='navbar'>
@@ -53,7 +55,8 @@ function Navbar({handleslidein}) {
                         <img src={logo} alt="logo"/>
                     </Link>
                     
-                    <Link to='/' className='nav-item nav-btn res-nav'>
+                    {/* res-nav not here also in down below */}
+                    <Link to='/' className='nav-item nav-btn res-nav'> 
                         About
                     </Link>
 
@@ -80,9 +83,11 @@ function Navbar({handleslidein}) {
                     ):(
                         <>
                             <Avatar backgroundColor="#009dff" px='10px' py='7px' borderRadius='50%' color='white'>
+
                                 <Link to={`/Users/${User?.result?._id}`} style={{color:'white', textDecoration:"none"}}>
                                     {User.result.name.charAt(0).toUpperCase()}
                                 </Link>
+                                
                             </Avatar>
                             <button className='nav-item nav-links' onClick={handlelogout}>Log Out</button>
                         </>

@@ -23,9 +23,11 @@ const Leftsidebar = ({slidein}) => {
                 <button className='nav-btnn'>
                     {/* The activeclassname='active' attribute in the NavLink component is used to apply a specific CSS class to the link when it is active.  */}
                     <NavLink to='/' className="side-nav-links" activeclassname='active'>
+                        {/* activeClass = 'active' ??? */}
                         <p>Home</p>
                     </NavLink>
                 </button>
+
 
                 <div className='side-nav-div'>
 
@@ -40,6 +42,7 @@ const Leftsidebar = ({slidein}) => {
                             <p style={{paddingLeft : '10px'}}>Questions</p>
                         </NavLink>
                     </button>
+                    
 
                     {/* Tags Button */}
                     <button className='nav-btnn'>
@@ -47,6 +50,7 @@ const Leftsidebar = ({slidein}) => {
                             <p>Tags</p>
                         </NavLink>
                     </button>
+                    
 
                     {/* Users Button */}
                     <button className='nav-btnn'>
