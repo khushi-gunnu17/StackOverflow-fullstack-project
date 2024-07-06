@@ -10,7 +10,8 @@ function Askquestion() {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const user = useSelector((state) => state.currentuserreducer)
+
+    const User = useSelector((state) => state.currentuserreducer)
     const [questiontitle, setquestiontitle] = useState("")
     const [questionbody, setquestionbody] = useState("")
     const [questiontag, setquestiontags] = useState("")
@@ -18,12 +19,13 @@ function Askquestion() {
     const handlesubmit = (e) => {
         e.preventDefault()
 
-        if(user) {
+        if(User) {
 
             if(questionbody && questiontitle && questiontag) {
 
-                dispatch(askquestion({questiontitle, questionbody, questiontag, userposted: user.result.name}, navigate))
                 alert("You have successfully posted a question.")
+                dispatch(askquestion({questiontitle, questionbody, questiontag, userposted: User.result.name}, navigate))
+
 
             } else {
                 alert("Please enter all the fields.")
@@ -46,11 +48,12 @@ function Askquestion() {
 
             <div className='ask-ques-container'>
 
-                <h1>Ask a public question.</h1>
+                <h1>Ask a Public Question.</h1>
 
                 <form onSubmit={handlesubmit}>
 
                     <div className='ask-form-container'>
+
                         <label htmlFor='ask-ques-title'>
                             <h4>Title</h4>
                             <p>Be specific and imagine you are asking a question to another person.</p>
@@ -87,15 +90,15 @@ function Askquestion() {
                                 onChange={(e) => {
                                     setquestiontags(e.target.value.split(" "))
                                 }} 
-                                placeholder='e.g. xml typescript wordpress'
+                                placeholder='e.g. (xml typescript wordpress)'
                             />
                         </label>
 
                     </div>
 
                     <input 
-                        type='submit' 
-                        value="Review your question"
+                        type="submit" 
+                        value="Ask"
                         className='review-btn'
                     />
 

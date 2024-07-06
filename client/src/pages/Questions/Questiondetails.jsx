@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import moment from "moment"
 import copy from "copy-to-clipboard"
-import upvote from '../../Assets/sort-up.svg'
-import downvote from '../../Assets/sort-down.svg'
+import upVote from '../../Assets/sort-up.svg'
+import downVote from '../../Assets/sort-down.svg'
 import './Questions.css'
 import Avatar from '../../Components/Avatar/Avatar.jsx'
 import Displayanswer from './Displayanswer.jsx'
@@ -15,13 +15,13 @@ const Questiondetails = () => {
 
     const [answer, setanswer] = useState("")
 
-    const dispatch = useDispatch()
-    const questionlist = useSelector((state) => state.questionreducer)
-    const user = useSelector((state) => state.currentuserreducer)
-
     const { id } = useParams()
     const location = useLocation()
     const navigate = useNavigate()
+
+    const dispatch = useDispatch()
+    const questionlist = useSelector((state) => state.questionreducer)
+    const user = useSelector((state) => state.currentuserreducer)
 
     const url="http://localhost:3000"
 
@@ -104,112 +104,125 @@ const Questiondetails = () => {
 
         <div className='question-details-page'>
 
+            {/* again no data here after questionlist */}
+
             {questionlist.data === null ? (
                 <h1>Loading....</h1>
             ) : (
                 <>
-                    {questionlist?.data
+                    {
+                        questionlist.data
                         .filter((question) => question._id === id)
                         .map((question) => (
 
-                        <div key={question._id}>
+                            <div key={question._id}>
 
-                            <section className='question-details-container'>
+                                <section className='question-details-container'>
 
-                                <h1>{question.questiontitle}</h1>
+                                    <h1>{question.questiontitle}</h1>
 
-                                <div className='question-details-container-2'>
+                                    <div className='question-details-container-2'>
 
-                                    <div className='question-votes'>
-                                        <img src={upvote} alt='' width={18} className='votes-icon' onClick={handleupvote} />
-                                        <p>{question.upvote.length - question.downvote.length}</p>
-                                        <img src={downvote} alt='' width={18} className='votes-icon' onClick={handledownvote} />
-                                    </div>
-
-                                    <div style={{width : "100%"}}>
-                                        
-                                        <p className='question-body'>{question.questionbody}</p>
-
-                                        <div className='question-details-tags'>
-                                            {question?.questiontags?.map((tag) => (
-                                                <p key={tag}>{tag}</p>
-                                            ))}
+                                        <div className='question-votes'>
+                                            <img src={upVote} alt='' width={18} className='votes-icon' onClick={handleupvote} />
+                                            <p>{question.upvote.length - question.downvote.length}</p>
+                                            <img src={downVote} alt='' width={18} className='votes-icon' onClick={handledownvote} />
                                         </div>
 
-                                        <div className='question-actions-user'>
+                                        <div style={{width : "100%"}}>
+                                            
+                                            <p className='question-body'>{question.questionbody}</p>
 
-                                            <div>
-                                                <button type='button' onClick={handleshare}>
-                                                    Share
-                                                </button>
+                                            <div className='question-details-tags'>
+                                                {
+                                                    question?.questiontags?.map((tag) => (
+                                                        <p key={tag}>{tag}</p>
+                                                    ))
+                                                }
+                                            </div>
 
-                                                {user?.result?._id === question?.userid && (
-                                                    <button type='button' onClick={handledelete}>
-                                                        Delete
+                                            <div className='question-actions-user'>
+
+                                                <div>
+                                                    <button type='button' onClick={handleshare}>
+                                                        Share
                                                     </button>
-                                                )}
 
-                                            </div>
+                                                    {
+                                                        user?.result?._id === question?.userid && (
+                                                            <button type='button' onClick={handledelete}>
+                                                                Delete
+                                                            </button>
+                                                        )
+                                                    }
 
-                                            <div>
-                                                <p>Asked {moment(question.askedon).fromNow()}</p>
+                                                </div>
 
-                                                <Link to={`Users/${question.userid}`} className='user-link' style={{color: "#0086d8"}}>
+                                                <div>
+                                                    <p>Asked {moment(question.askedon).fromNow()}</p>
 
-                                                    <Avatar backgroundColor="orange" px="8px" py="5px" borderRadius="4px">
-                                                        {question.userposted.charAt(0).toUpperCase()}
-                                                    </Avatar>
+                                                    <Link to={`Users/${question.userid}`} className='user-link' style={{color: "#0086d8"}}>
 
-                                                    <div>{question.userposted}</div>
+                                                        <Avatar backgroundColor="orange" px="8px" py="5px" borderRadius="4px">
+                                                            {question.userposted.charAt(0).toUpperCase()}
+                                                        </Avatar>
 
-                                                </Link>
+                                                        <div>{question.userposted}</div>
+
+                                                    </Link>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </section>
-
-                            {question.noofanswers !== 0 && (
-                                <section>
-                                    <h3>{question.noofanswers} Answers</h3>
-                                    <Displayanswer key={question._id} question={question} handleshare={handleshare} />
                                 </section>
-                            )}
 
-                            <section className='post-ans-container'>
+                                {
+                                    question.noofanswers !== 0 && (
+                                        <section>
+                                            <h3>{question.noofanswers} Answers</h3>
+                                            <Displayanswer key={question._id} question={question} handleshare={handleshare} />
+                                        </section>
+                                    )
+                                }
 
-                                <h3>Your Answers</h3>
+                                <section className='post-ans-container'>
 
-                                <form onSubmit={(e) => {
-                                    handlepostans(e, question.answer.length)
-                                }} >
+                                    <h3>Your Answers</h3>
 
-                                    <textarea name='' id='' cols="30" rows="10" value={answer} onChange={(e) => setanswer(e.target.value)} ></textarea>
-                                    <br />
+                                    <form onSubmit={(e) => (
+                                        handlepostans(e, question.answer.length)
+                                    )} >
 
-                                    <input type='submit' className='post-ans-btn' value="Post Your Answer" />
+                                        <textarea name='' id='' cols="30" rows="10" value={answer} onChange={(e) => setanswer(e.target.value)} ></textarea>
+                                        <br />
 
-                                </form>
+                                        <input type='submit' className='post-ans-btn' value="Post Your Answer" />
 
-                                <p>
-                                    Browse Other Question tagged
-                                    {question?.questiontags?.map((tag) => (
-                                        <Link to="/Tags" key={tag} className='ans-tag' >
+                                    </form>
+
+                                    <p>
+                                        Browse Other Question tagged
+                                        {
+                                            question?.questiontags?.map((tag) => (
+                                                <Link to="/Tags" key={tag} className='ans-tags' >
+                                                    {" "}
+                                                    {tag} {" "}
+                                                </Link>
+                                            ))
+                                        }{" "}
+                                        or
+                                        <Link to="/Askquestion" style={{textDecoration: "none", color:"#009dff"}}>
                                             {" "}
-                                            {tag} {" "}
+                                            Ask your own question
                                         </Link>
-                                    ))}{" "}
-                                    or
-                                    <Link to="/Askquestion" style={{textDecoration: "none", color:"#009dff"}}>
-                                        {" "}
-                                        Ask your own question
-                                    </Link>
 
-                                </p>
+                                    </p>
 
-                            </section>
-                        </div>
-                    ) ) }
+                                </section>
+                            </div>
+                        ) ) 
+                    }
                 </>
             )}
         </div>

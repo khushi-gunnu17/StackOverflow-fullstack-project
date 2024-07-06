@@ -18,7 +18,8 @@ function Displayanswer({question, handleshare}) {
 
     return (
         <div>
-            {question?.answer.map((ans) => (
+            {
+                question?.answer.map((ans) => (
 
                 <div className='display-ans' key={ans._id}>
 
@@ -27,13 +28,17 @@ function Displayanswer({question, handleshare}) {
                     <div className='question-actions-user'>
 
                         <div>
+
                             <button type='button' onClick={handleshare}>Share</button>
+
                             {user?.result?._id === ans?.userid && (
                                 <button type='button' onClick={() => handledelete(ans._id, question.noofanswers)}>Delete</button>
                             )}
+
                         </div>
                         
                         <div>
+                            {/*  answered {ans.answeredon} */}
                             <p>answered {moment (ans.answeredon).fromNow()}</p>
 
                             <Link to={`Users/${ans.userid}`} className='user-link' style={{ color: "#0086d8" }}>
@@ -43,11 +48,13 @@ function Displayanswer({question, handleshare}) {
 
                                 <div>{ans.useranswered}</div>
                             </Link>
+                            
                         </div>
 
                     </div>
                 </div>
-            ))}
+                ))
+            }
         </div>
     )
 }

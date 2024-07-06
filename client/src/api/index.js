@@ -37,8 +37,8 @@ export const getallusers = () => API.get("/user/getallusers")
 export const updateprofile = (id, updatedata) => API.patch(`user/update/${id}`, updatedata)
 
 
-export const postquestion = (questiondata) => API.post("/questions/Ask", questiondata)
-export const getallquestion = () => API.get("/questions/get")
+export const postquestion = (questiondata) => API.post("questions/askques", questiondata)
+export const getallquestion = () => API.get("questions/get")
 export const deletequestion = (id) => API.delete(`/questions/delete/${id}`)
 export const votequestion = (id, value) => API.delete(`/questions/delete/${id}`, {value})
 

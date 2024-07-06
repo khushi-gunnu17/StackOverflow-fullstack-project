@@ -1,6 +1,6 @@
 import React from 'react'
 import './Homemainbar.css'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import Questionlist from './Questionlist.jsx'
 
@@ -47,7 +47,8 @@ function Homemainbar() {
                         <>
                             {/* no data here  */}
                             <p>{questionlist.data.length} questions</p>
-                            <Questionlist questionlist = {questionlist.data} />
+
+                            <Questionlist questionlist={questionlist}/>
                             {/* no data here after questionlist */}
                         </>
                     )

@@ -16,7 +16,7 @@ function RoutesAll({slidein, handleslidein}) {
            <Route path='/Askquestion' element={<Askquestion />} /> 
            <Route path='/Auth' element={<Auth />} /> 
            <Route path='/Questions' element={<Questions slidein={slidein} handleslidein={handleslidein}/>} /> 
-           <Route path='/Question/:id' element={<Displayquestion slidein={slidein} handleslidein={handleslidein}/>} /> 
+           <Route path='/Questions/:id' element={<Displayquestion slidein={slidein} handleslidein={handleslidein}/>} /> 
            <Route path='/Tags' element={<Tags slidein={slidein} handleslidein={handleslidein}/>} /> 
            <Route path='/Users' element={<Users slidein={slidein} handleslidein={handleslidein}/>} /> 
            <Route path='/Users/:id' element={<Userprofile slidein={slidein} handleslidein={handleslidein}/>} /> 

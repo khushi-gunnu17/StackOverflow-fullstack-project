@@ -35,6 +35,8 @@ function Navbar({handleslidein}) {
                 handlelogout()
             }
         }
+
+        // this is done so that whenever we refresh the page the user doen't get to ask to login again and again.
         dispatch(setcurrentuser(JSON.parse(localStorage.getItem("Profile"))))
     }, [User?.token, dispatch, handlelogout])
 

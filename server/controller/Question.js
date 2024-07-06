@@ -1,4 +1,4 @@
-import Question from "../models/Question.js";
+import Question from "../models/Questions.js";
 import mongoose from "mongoose"
 
 
@@ -9,18 +9,18 @@ export const Askquestion = async(req, res) => {
     const userid = req.userid
 
     // Creating a new question using the Question model.
-    const postquestion = new Question({
+    const postQuestion = await Question.create({
         ...postquestiondata, userid
     })
 
     try {
         // saving the question to the database
-        await postquestion.save()
+        await postQuestion.save()
         res.status(200).json("Posted a question successfully.")
         
     } catch (error) {
         console.log(error);
-        res.status(404).json("Could not post a new question.")
+        res.status(404).json("Could not post a new question.")      // 409 here 
         return 
     }
 
