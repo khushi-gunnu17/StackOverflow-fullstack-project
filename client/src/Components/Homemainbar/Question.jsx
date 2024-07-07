@@ -22,10 +22,8 @@ function Question({ question }) {
 
 
             <div className='display-question-details'>
-
-                {/* id here not _id */}
                 
-                <Link to={`/Questions/${question.id}`} className='question-title-link'>
+                <Link to={`/Questions/${question._id}`} className='question-title-link'>
                     {question.questiontitle.length > (window.innerWidth <= 400 ? 70 : 90)
                      ? question.questiontitle.substring(
                         0,
