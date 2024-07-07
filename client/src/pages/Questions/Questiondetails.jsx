@@ -149,7 +149,7 @@ const Questiondetails = () => {
                                                     </button>
 
                                                     {
-                                                        user?.result?._id === question?.userid && (
+                                                        user?.result?.id === question?.userid && (
                                                             <button type='button' onClick={handledelete}>
                                                                 Delete
                                                             </button>
