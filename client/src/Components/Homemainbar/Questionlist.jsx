@@ -1,14 +1,14 @@
 import React from 'react'
 import Question from './Question.jsx'
 
-function Questionlist({questionList}) {
+function Questionlist({questionlist}) {
 
     return (
         // id here not _id
         <>
             {
-                questionList?.map((question) => (
-                    <Question question={question} key={question._id} />
+                questionlist?.data.map((question) => (
+                    <Question question={question} key={question.id} />
                 ))
             }
         </>
