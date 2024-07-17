@@ -10,8 +10,6 @@ export const postanswer = async(req, res) => {
     // Extracting the number of answers, the answer body, and the user who answered from the request body.
     const { noofanswers, answerbody, useranswered } = req.body;
 
-    const userid = req.userid
-
     if (!mongoose.Types.ObjectId.isValid(_id)) {
         return res.status(404).send("Question Unavailable....")
     }
@@ -19,9 +17,17 @@ export const postanswer = async(req, res) => {
 
     try {
 
-        const updatequestion = await Question.findByIdAndUpdate(_id, {
-            $addToSet : {answer : [{answerbody, useranswered, userid}]}
-        })
+        const updatequestion = await Question.findByIdAndUpdate(
+            _id,
+            {
+                $push: { 'answer': { answerbody, useranswered, userid: req.userid } }
+            },
+            { new: true } // Return the updated document
+        );
+
+        if (!updatequestion) {
+            return res.status(404).send("Question not found...");
+        }
 
         updatenoofquestion(_id, noofanswers)
 
@@ -42,8 +48,8 @@ const updatenoofquestion = async(_id, noofanswers) => {
 
     try {
 
-        await Question.findByIdAndUpdate(_id, {
-            $set : {noofanswers : noofanswers}
+        await Question.findByIdAndUpdate( _id, {
+            $set : {'noofanswers' : noofanswers}
         })
         
     } catch (error) {

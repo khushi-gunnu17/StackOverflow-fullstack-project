@@ -8,7 +8,7 @@ import Avatar from '../../Components/Avatar/Avatar.jsx'
 import Displayanswer from './Displayanswer.jsx'
 import { Link, useNavigate, useLocation, useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { deletequestion, votequestion, postanswer } from '../../action/question.js'
+import { deletequestion, votequestion, PostAnswer } from '../../action/question.js'
 
 
 const Questiondetails = () => {
@@ -43,7 +43,7 @@ const Questiondetails = () => {
             } 
             else {
 
-                dispatch(postanswer({
+                dispatch(PostAnswer({
                     id,
                     noofanswers : answerlength + 1,
                     answerbody : answer,
@@ -190,9 +190,8 @@ const Questiondetails = () => {
 
                                     <h3>Your Answers</h3>
 
-                                    <form onSubmit={(e) => (
-                                        handlepostans(e, question.answer.length)
-                                    )} >
+                                    {/* curly brackets here */}
+                                    <form onSubmit={(e) => handlepostans(e, question.answer.length) } >
 
                                         <textarea name='' id='' cols="30" rows="10" value={answer} onChange={(e) => setanswer(e.target.value)} ></textarea>
                                         <br />

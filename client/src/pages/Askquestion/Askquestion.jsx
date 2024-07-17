@@ -14,17 +14,17 @@ function Askquestion() {
     const User = useSelector((state) => state.currentuserreducer)
     const [questiontitle, setquestiontitle] = useState("")
     const [questionbody, setquestionbody] = useState("")
-    const [questiontag, setquestiontags] = useState("")
+    const [questiontags, setquestiontags] = useState("")
 
     const handlesubmit = (e) => {
         e.preventDefault()
 
         if(User) {
 
-            if(questionbody && questiontitle && questiontag) {
+            if(questionbody && questiontitle && questiontags) {
 
                 alert("You have successfully posted a question.")
-                dispatch(askquestion({questiontitle, questionbody, questiontag, userposted: User.result.name}, navigate))
+                dispatch(askquestion({questiontitle, questionbody, questiontags, userposted: User.result.name}, navigate))
 
 
             } else {
@@ -98,7 +98,7 @@ function Askquestion() {
 
                     <input 
                         type="submit" 
-                        value="Ask"
+                        value="Ask Question"
                         className='review-btn'
                     />
 

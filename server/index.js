@@ -27,7 +27,7 @@ app.use(cors())     // Enable cors for all routes
 // Uses the userroutes for handling requests to various endpoints.
 app.use("/user", userroutes)
 app.use("/questions", questionroutes)
-app.use("/answer", answerroutes)
+app.use("/answers", answerroutes)
 
 
 // sending response to the home route

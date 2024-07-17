@@ -82,7 +82,7 @@ export const votequestion = (id, value) => async(dispatch) => {
 
 
 
-export const postanswer = (answerdata) => async(dispatch) => {
+export const PostAnswer = (answerdata) => async(dispatch) => {
     try {
 
         const {id, noofanswers, answerbody, useranswered} = answerdata
