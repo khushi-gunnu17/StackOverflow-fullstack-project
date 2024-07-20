@@ -8,6 +8,6 @@ const router = express.Router()
 router.post("/signup", signup)
 router.post("/login", login)
 router.get("/getallusers", getallusers)
-router.patch("/update/:id", auth, updateprofile)
+router.patch("/update/:id", updateprofile)
 
 export default router

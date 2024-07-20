@@ -8,14 +8,15 @@ function Editprofileform({currentuser, setSwitch}) {
 
     const [name, setname] = useState(currentuser?.result?.name)
     const [about, setabout] = useState(currentuser?.result?.about)
-    const dispatch = useDispatch()
     const [tags, settags] = useState([])
+    const dispatch = useDispatch()
+
 
     const handlesubmit = (e) => {
         e.preventDefault()
 
-        if (tags[0] === '' || tags.length === 0) {
-            alert("Update tags field.")
+        if (tags.length === 0) {
+            dispatch(updateprofile(currentuser?.result?._id, {name, about, tags: currentuser?.tags}))
         } else {
             dispatch(updateprofile(currentuser?.result?._id, {name, about, tags}))
         }
