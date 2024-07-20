@@ -38,7 +38,8 @@ const QuestionSchema = mongoose.Schema({
     },
 
     userid : {
-        type : String
+        type : String,
+        required : true
     },
 
     askedon : {

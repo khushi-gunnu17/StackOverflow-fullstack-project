@@ -45,7 +45,7 @@ function Question({ question }) {
 
                     <p className='display-time'>
                         {/* .fromNow() is not here in the changed one */}
-                        asked {moment(question.askedon).fromNow()} {question.userposted}
+                        asked {moment(question.askedon).fromNow()} by {question.userposted}
                     </p>
 
                 </div>

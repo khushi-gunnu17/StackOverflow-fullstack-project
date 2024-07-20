@@ -6,12 +6,16 @@ import mongoose from "mongoose"
 export const Askquestion = async(req, res) => {
 
     const postquestiondata = req.body
-    const userid = req.userid
+    const userID = req.userid
 
     // Creating a new question using the Question model.
-    const postQuestion = await Question.create({
-        ...postquestiondata, userid
-    })
+    // const postQuestion = await Question.create({
+    //     ...postquestiondata, userid
+    // })
+
+    // same as the above one
+
+    const postQuestion = new Question(postquestiondata)
 
     try {
         // saving the question to the database

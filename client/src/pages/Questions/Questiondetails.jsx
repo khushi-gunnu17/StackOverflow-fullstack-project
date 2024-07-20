@@ -47,7 +47,8 @@ const Questiondetails = () => {
                     id,
                     noofanswers : answerlength + 1,
                     answerbody : answer,
-                    useranswered : user.result.name
+                    useranswered : user.result.name,
+                    userid : user.result._id
                 }))
 
                 setanswer("")
@@ -148,8 +149,9 @@ const Questiondetails = () => {
                                                         Share
                                                     </button>
 
+                                                    {/* _id not working at all */}
                                                     {
-                                                        user?.result?.id === question?.userid && (
+                                                        user?.result?._id === question?.userid && (
                                                             <button type='button' onClick={handledelete}>
                                                                 Delete
                                                             </button>
@@ -159,7 +161,7 @@ const Questiondetails = () => {
                                                 </div>
 
                                                 <div>
-                                                    <p>Asked {moment(question.askedon).fromNow()}</p>
+                                                    <p>asked {moment(question.askedon).fromNow()}</p>
 
                                                     <Link to={`Users/${question.userid}`} className='user-link' style={{color: "#0086d8"}}>
 

@@ -8,7 +8,7 @@ export const postanswer = async(req, res) => {
     const {id : _id} = req.params
 
     // Extracting the number of answers, the answer body, and the user who answered from the request body.
-    const { noofanswers, answerbody, useranswered } = req.body;
+    const { noofanswers, answerbody, useranswered, userid } = req.body;
 
     if (!mongoose.Types.ObjectId.isValid(_id)) {
         return res.status(404).send("Question Unavailable....")
@@ -20,7 +20,7 @@ export const postanswer = async(req, res) => {
         const updatequestion = await Question.findByIdAndUpdate(
             _id,
             {
-                $push: { 'answer': { answerbody, useranswered, userid: req.userid } }
+                $push: { 'answer': { answerbody, useranswered, userid } }
             },
             { new: true } // Return the updated document
         );

@@ -24,7 +24,7 @@ function Askquestion() {
             if(questionbody && questiontitle && questiontags) {
 
                 alert("You have successfully posted a question.")
-                dispatch(askquestion({questiontitle, questionbody, questiontags, userposted: User.result.name}, navigate))
+                dispatch(askquestion({questiontitle, questionbody, questiontags, userposted: User.result.name, userid : User?.result?._id }, navigate))
 
 
             } else {
