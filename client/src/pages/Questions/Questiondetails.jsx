@@ -23,7 +23,7 @@ const Questiondetails = () => {
     const questionlist = useSelector((state) => state.questionreducer)
     const user = useSelector((state) => state.currentuserreducer)
 
-    const url="http://localhost:3000"
+    const url="https://stackoverflow-fullstack-project.onrender.com"
 
 
 
