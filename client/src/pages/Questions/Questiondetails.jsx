@@ -80,7 +80,7 @@ const Questiondetails = () => {
             navigate('/Auth')
         } 
         else {
-            dispatch(votequestion(id, "upvote"))
+            dispatch(votequestion(id, 'upvote', user.result._id))
         }
     }
 
@@ -94,7 +94,7 @@ const Questiondetails = () => {
             navigate('/Auth')
         } 
         else {
-            dispatch(id, "downvote")
+            dispatch(votequestion(id, 'downvote', user.result._id))
         }
     }
 

@@ -10,7 +10,6 @@ function Question({ question }) {
         <div className='display-question-container'>
 
             <div className='display-votes-ans'>
-                {/* question.votes */}
                 <p>{question.upvote.length - question.downvote.length}</p>
                 <p>votes</p>
             </div>
@@ -44,7 +43,6 @@ function Question({ question }) {
                     </div>
 
                     <p className='display-time'>
-                        {/* .fromNow() is not here in the changed one */}
                         asked {moment(question.askedon).fromNow()} by {question.userposted}
                     </p>
 

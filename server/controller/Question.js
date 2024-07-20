@@ -89,18 +89,15 @@ export const votequestion = async(req, res) => {
     // Extracting the id from the request parameters and assigns it to _id.
     const { id : _id } = req.params
 
-    // Extracting the value from the request body, which indicates if the vote is an "upvote" or "downvote".
-    const { value } = req.body
+    // Extracting the value and userid from the request body, which indicates if the vote is an "upvote" or "downvote".
+    const { value, userid } = req.body
 
-
-    // Why Extract userid Again?
-    // In this function, we extracted the user ID from the req object again because we need to know who is voting on the question.
-    const userid = req.userid
 
     if (!mongoose.Types.ObjectId.isValid(_id)) {
         return res.status(404).send("Question Unavailable....")
     }
 
+    
     try {
 
         const question = await Question.findById(_id)
@@ -153,18 +150,6 @@ export const votequestion = async(req, res) => {
 }
 
 
-
-/*
-
-Why Extract userid Again?
-- Clarity: It makes it clear that userid is coming from the auth middleware. This explicit extraction helps in understanding that userid is derived from the authentication process.
-- Convenience: It simplifies the use of userid within the function, allowing direct access to the authenticated user's ID without having to repeatedly reference req.userid.
-
-*/
-
-
-
-
 /* 
 
 - Handle Upvote Logic:
@@ -182,9 +167,6 @@ Why Extract userid Again?
 > else: If the user has already downvoted, remove the downvote (toggle the vote).
 
 */
-
-
-
 
 
 

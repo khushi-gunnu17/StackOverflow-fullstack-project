@@ -40,7 +40,7 @@ export const updateprofile = (id, updatedata) => API.patch(`user/update/${id}`, 
 export const postquestion = (questiondata) => API.post("questions/askques", questiondata)
 export const getallquestion = () => API.get("questions/get")
 export const deletequestion = (id) => API.delete(`/questions/delete/${id}`)
-export const votequestion = (id, value) => API.delete(`/questions/delete/${id}`, {value})
+export const votequestion = (id, value, userid) => API.patch(`/questions/vote/${id}`, {value, userid})
 
 
 export const postanswer = (id, noofanswers, answerbody, useranswered, userid) => API.patch(`answers/post/${id}`, {noofanswers, answerbody, useranswered, userid})

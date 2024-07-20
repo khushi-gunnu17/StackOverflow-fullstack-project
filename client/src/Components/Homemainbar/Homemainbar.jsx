@@ -38,8 +38,6 @@ function Homemainbar() {
 
             <div>
                 
-                {/* questionlist only here ? */}
-
                 {   
                     questionlist.data === null ? (
                         <h1>Loading...</h1>

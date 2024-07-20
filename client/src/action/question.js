@@ -65,10 +65,10 @@ export const deletequestion = (id, navigate) => async(dispatch) => {
 
 
 
-export const votequestion = (id, value) => async(dispatch) => {
+export const votequestion = (id, value, userid) => async(dispatch) => {
     try {
 
-        await api.votequestion(id, value)
+        await api.votequestion(id, value, userid)
         dispatch(fetchallquestion())
         
     } catch (error) {
