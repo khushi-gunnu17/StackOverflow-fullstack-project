@@ -26,6 +26,7 @@ function Navbar({handleslidein}) {
 
     useEffect(() => {
         const token = User?.token
+        
         if (token) {
             const decodetoken = jwtDecode(token)
 
@@ -91,6 +92,7 @@ function Navbar({handleslidein}) {
                                 </Link>
                                 
                             </Avatar>
+
                             <button className='nav-item nav-links' onClick={handlelogout}>Log Out</button>
                         </>
                     )}
