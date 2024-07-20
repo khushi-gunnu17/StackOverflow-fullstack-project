@@ -80,7 +80,7 @@ export const deleteanswer = async(req, res) => {
 
         await Question.updateOne(
             {_id},
-            {$pull : {answer : {_id : answerid}}}
+            {$pull : {'answer' : {_id : answerid}}}
         )
 
         updatenoofquestion(_id, noofanswers)

@@ -31,14 +31,16 @@ function Displayanswer({question, handleshare}) {
 
                             <button type='button' onClick={handleshare}>Share</button>
 
-                            {user?.result?._id === ans?.userid && (
-                                <button type='button' onClick={() => handledelete(ans._id, question.noofanswers)}>Delete</button>
-                            )}
+                            {
+                                user?.result?._id === ans?.userid && (
+                                    <button type='button' onClick={() => handledelete(ans._id, question.noofanswers)}>Delete</button>
+                                )
+                            }
 
                         </div>
                         
                         <div>
-                            {/*  answered {ans.answeredon} */}
+
                             <p>answered {moment (ans.answeredon).fromNow()}</p>
 
                             <Link to={`Users/${ans.userid}`} className='user-link' style={{ color: "#0086d8" }}>
