@@ -32,31 +32,36 @@ function Editprofileform({currentuser, setSwitch}) {
 
 
             <form className="edit-profile-form" onSubmit={handlesubmit}>
-
+                
+                {/* for name */}
                 <label htmlFor="name">
-                    <h3>Display name</h3>
+                    <h3>Display Name</h3>
                     <input type="text" value={name} onChange={(e) => setname(e.target.value)}/>
                 </label>
 
+                {/* for about section */}
                 <label htmlFor="about">  
                     <h3>About me</h3>
                     <textarea name="" id="about" cols="30" rows="10" value={about} onChange={(e) => (setabout(e.target.value))} ></textarea>
                 </label>
 
+                {/* for tags */}
                 <label htmlFor="tags">
                     <h3>Watched Tags</h3>
                     <p>Add tags separated by one space</p>
                     <input 
                         type="text"
                         id="tags"
-                        onChange={(e) => settags(e.target.value.split(" "))}
+                        onChange={(e) => settags(e.target.value.split(' '))}
                     />
                 </label>
 
                 <br />
 
-                <input type="submit" value="save profile" className="user-submit-btn" />
-
+                {/* save button */}
+                <input type="submit" value="Save Profile" className="user-submit-btn" />
+                
+                {/* cancel button */}
                 <button type="button" className="user-cancel-btn" onClick={() => setSwitch(false)}>
                     Cancel
                 </button>

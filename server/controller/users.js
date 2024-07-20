@@ -13,7 +13,7 @@ export const getallusers = async(req, res) => {
                 name : user.name,
                 about : user.about,
                 tags : user.tags,
-                joinedon : user.joinedon,
+                joinedon : user.joinedon
             })
         })
 

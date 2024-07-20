@@ -25,7 +25,7 @@ const userSchema = mongoose.Schema({
     },
 
     joinedon : {
-        type : String,
+        type : Date,
         default : Date.now
     }
 

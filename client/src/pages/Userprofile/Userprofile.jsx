@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Leftsidebar from '../../Components/Leftsidebar/Leftsidebar.jsx'
 import { useParams } from "react-router-dom";
-import moment from "moment"
+import moment from "moment";
 import Avatar from '../../Components/Avatar/Avatar.jsx'
 import Editprofileform from './Editprofileform.jsx'
 import Profilebio from './Profilebio.jsx'
@@ -40,7 +40,8 @@ function Userprofile({slidein}) {
                             <div className="user-name">
                                 <h1>{currentprofile?.name}</h1>
                                 <p>
-                                    <FontAwesomeIcon icon={faBirthdayCake} /> Joined{" "} {moment(currentprofile?.joinedon).fromNow()}
+                                    <FontAwesomeIcon icon={faBirthdayCake} /> {" "}
+                                    Joined {moment(currentprofile?.joinedon).fromNow()}
                                 </p>
                             </div>
                         </div>
@@ -50,6 +51,7 @@ function Userprofile({slidein}) {
                                 <FontAwesomeIcon icon={faPen} /> Edit Profile
                             </button>
                         )}
+                        
                     </div>
 
 
