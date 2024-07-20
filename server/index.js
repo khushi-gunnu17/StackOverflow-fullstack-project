@@ -32,7 +32,7 @@ app.use("/answers", answerroutes)
 
 // sending response to the home route
 app.get('/', (req, res) => {
-    res.send("Codequest")
+    res.send("Codequest is running.")
 })
 
 
